@@ -1,11 +1,21 @@
 use nannou::prelude::*;
 
 fn main() {
-    nannou::sketch(view).run();
+    nannou::app(model)
+        .event(event)
+        .simple_window(view)
+        .run();
 }
 
-fn view(app: &App, frame: Frame) {
-    let draw = app.draw();
-    draw.background().color(BLUE);
-    draw.to_frame(app, &frame).unwrap();
+struct Model {}
+
+fn model(_app: &App) -> Model {
+    Model {}
+}
+
+fn event(_app: &App, _model: &mut Model, _event: Event) {
+}
+
+fn view(_app: &App, _model: &Model, frame: Frame) {
+    frame.clear(PURPLE);
 }
